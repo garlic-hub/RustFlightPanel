@@ -1,0 +1,6 @@
+instrument: "Airspeed"
+grid_x: 0
+grid_y: 0
+textures_paths:
+  - "assets/airspeed.png"
+  - "assets/airspeed_needle.png"
