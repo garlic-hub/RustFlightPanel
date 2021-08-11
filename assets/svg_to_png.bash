@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
-WIDTH=300
-HEIGHT=300
+if [[ $# -ne 2 ]]; then
+    echo "Usage: $0 <width> <height>"
+    exit 1
+fi
 
 for f in *.svg; do
     out=$(basename "$f" .svg)
-    inkscape -w "$WIDTH" -h "$HEIGHT" "$f" -o "$out.png"
+    inkscape -w "$1" -h "$2" "$f" -o "$out.png"
 done
