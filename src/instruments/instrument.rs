@@ -12,6 +12,7 @@ pub type InstrumentData = HashMap<String, Value>;
 #[derive(Deserialize, Debug)]
 enum InstrumentType {
     Airspeed,
+    AttitudeIndicator,
 }
 
 #[derive(Deserialize, Debug)]

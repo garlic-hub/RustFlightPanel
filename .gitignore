@@ -1,1 +1,4 @@
 /target
+
+# we only want to store the SVGs, not the resulting PNGs
+*.png

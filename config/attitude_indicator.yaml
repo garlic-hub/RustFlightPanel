@@ -1,0 +1,7 @@
+instrument: "AttitudeIndicator"
+grid_x: 1
+grid_y: 0
+textures_paths:
+  - "assets/attitude_indicator_roll.png"
+  - "assets/attitude_indicator_pitch.png"
+  - "assets/attitude_indicator_pointer.png"
