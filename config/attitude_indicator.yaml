@@ -1,3 +1,4 @@
+enabled: true
 instrument: "AttitudeIndicator"
 grid_x: 1
 grid_y: 0

@@ -2,27 +2,21 @@ mod instruments;
 
 use anyhow::Result;
 use macroquad::prelude::*;
-
-use crate::instruments::airspeed::Airspeed;
-use crate::instruments::attitude_indicator::AttitudeIndicator;
-use crate::instruments::instrument::Instrument;
-use crate::instruments::instrument::InstrumentData;
 use serde_json::json;
+
+use crate::instruments::instrument::get_instruments;
+use crate::instruments::instrument::InstrumentData;
 
 const GRID_SIZE_WIDTH: f32 = 300.;
 const GRID_SIZE_HEIGHT: f32 = 300.;
 
 #[macroquad::main("Flight Panel")]
 async fn main() -> Result<()> {
-    let a = Airspeed::create("config/airspeed.yaml").await?;
-    let ai = AttitudeIndicator::create("config/attitude_indicator.yaml").await?;
     let mut rot = 0.;
     let mut map = InstrumentData::new();
     map.insert("rot".to_string(), json!(rot));
 
-    let mut v = Vec::<Box<dyn Instrument>>::new();
-    v.push(Box::new(a));
-    v.push(Box::new(ai));
+    let mut v = get_instruments().await?;
 
     loop {
         clear_background(WHITE);
@@ -33,7 +27,6 @@ async fn main() -> Result<()> {
         }
         rot += 0.03;
         map.insert("rot".to_string(), json!(rot));
-        println!("{}", get_fps());
 
         next_frame().await
     }

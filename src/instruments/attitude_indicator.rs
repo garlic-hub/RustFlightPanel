@@ -10,8 +10,7 @@ pub struct AttitudeIndicator {
 }
 
 impl AttitudeIndicator {
-    pub async fn create(config_path: &str) -> Result<Self> {
-        let ic = InstrumentConfig::from_file(config_path)?;
+    pub async fn new(ic: InstrumentConfig) -> Result<Self> {
         let textures_vec = ic.load_textures().await?;
         Ok(AttitudeIndicator {
             config: ic,
